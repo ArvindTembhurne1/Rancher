@@ -1,0 +1,236 @@
+---
+vcenter_hostname: "10.10.0.10"
+vcenter_username: "administrator@vsphere.local"
+vcenter_password: "Password!234"
+#cluster_name: "Ranch-cntrl-plane1"
+esxi01_hostname: "10.10.0.5"
+esxi02_hostname: "10.10.0.6"
+esxi03_hostname: "10.10.0.7"
+datacenter_name: "DC1-Rancher"
+datastore_name: "rancher-ds"
+vmtemplate: "Rancher_Template_3"
+dumpfacts: False
+
+rancher_disk_size: 100
+rancher_cpu_size: 2
+rancher_memory_size: 8192
+rancher01_ip: "10.10.0.11"
+rancher02_ip: "10.10.0.12"
+rancher03_ip: "10.10.0.13"
+rancher01_ip2: "10.0.75.101"
+rancher02_ip2: "10.0.75.102"
+rancher03_ip2: "10.0.75.103"
+
+#rancher01_fqdn: "rancher01.tennet.com"
+rancher01_name: "rancher01"
+rancher02_name: "rancher02"
+rancher03_name: "rancher03"
+
+lb_disk_size: 100
+lb_cpu_size: 2
+lb_memory_size: 8192
+lb01_ip: "10.10.0.17"
+lb02_ip: "10.10.0.18"
+lb03_ip: "10.10.0.19"
+lb01_ip2: "10.0.75.104"
+lb02_ip2: "10.0.75.105"
+lb03_ip2: "10.0.75.106"
+#lb01_fqdn: "lb01.tennet.com"
+lb01_name: "lb01"
+lb02_name: "lb02"
+lb03_name: "lb03"
+
+
+worker_disk_size: 100
+worker_cpu_size: 2
+worker_memory_size: 8192
+worker01_ip: "10.10.0.14"
+worker02_ip: "10.10.0.15"
+worker03_ip: "10.10.0.16"
+worker01_ip2: "10.0.75.107"
+worker02_ip2: "10.0.75.108"
+worker03_ip2: "10.0.75.109"
+#worker01_fqdn: "worker01.tennet.com"
+worker01_name: "worker01"
+worker02_name: "worker02"
+worker03_name: "worker03"
+
+
+subnet_mask: 255.255.0.0
+#gateway_address_01: 0.0.0.0
+gateway_address_02: 10.0.1.1
+dns_server_address_01: 10.10.0.2
+dns_server_address_02: 10.0.1.254
+domain_name: "tennet.com"
+network_name_01: "VMnetwork_1151"
+network_name_02: "VM Network-1193"
+vm_type: vmxnet3
+disk_type: thin
+
+######################### No Change Required #########################
+
+rancher_vms:
+  "{{ rancher01_name }}":
+    ip: "{{ rancher01_ip }}"
+    iip: "{{ rancher01_ip2 }}"
+    name: "{{ rancher01_name }}"
+    cpu: "{{ rancher_cpu_size }}"
+    mem: "{{ rancher_memory_size }}"
+    disk_size: "{{ rancher_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi01_hostname }}"
+
+  "{{ rancher02_name }}":
+    ip: "{{ rancher02_ip }}"
+    iip: "{{ rancher02_ip2 }}"
+    name: "{{ rancher02_name }}"
+    cpu: "{{ rancher_cpu_size }}"
+    mem: "{{ rancher_memory_size }}"
+    disk_size: "{{ rancher_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi02_hostname }}"
+
+
+  "{{ rancher03_name }}":
+    ip: "{{ rancher03_ip }}"
+    iip: "{{ rancher03_ip2 }}"
+    name: "{{ rancher03_name }}"
+    cpu: "{{ rancher_cpu_size }}"
+    mem: "{{ rancher_memory_size }}"
+    disk_size: "{{ rancher_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"  
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi03_hostname }}"
+
+
+  "{{ lb01_name }}":
+    ip: "{{ lb01_ip }}"
+    iip: "{{ lb01_ip2 }}"
+    name: "{{ lb01_name }}"
+    cpu: "{{ lb_cpu_size }}"
+    mem: "{{ lb_memory_size }}"
+    disk_size: "{{ lb_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi01_hostname }}"
+
+
+  "{{ lb02_name }}":
+    ip: "{{ lb02_ip }}"
+    iip: "{{ lb02_ip2 }}"
+    name: "{{ lb02_name }}"
+    cpu: "{{ lb_cpu_size }}"
+    mem: "{{ lb_memory_size }}"
+    disk_size: "{{ lb_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi02_hostname }}"
+
+
+  "{{ lb03_name }}":
+    ip: "{{ lb03_ip }}"
+    iip: "{{ lb03_ip2 }}"
+    name: "{{ lb03_name }}"
+    cpu: "{{ lb_cpu_size }}"
+    mem: "{{ lb_memory_size }}"
+    disk_size: "{{ lb_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi03_hostname }}"
+
+
+
+  "{{ worker01_name }}":
+    ip: "{{ worker01_ip }}"
+    iip: "{{ worker01_ip2 }}"
+    name: "{{ worker01_name }}"
+    cpu: "{{ worker_cpu_size }}"
+    mem: "{{ worker_memory_size }}"
+    disk_size: "{{ worker_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi01_hostname }}"
+
+
+  "{{ worker02_name }}":
+    ip: "{{ worker02_ip }}"
+    iip: "{{ worker02_ip2 }}"
+    name: "{{ worker02_name }}"
+    cpu: "{{ worker_cpu_size }}"
+    mem: "{{ worker_memory_size }}"
+    disk_size: "{{ worker_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi02_hostname }}"
+
+
+  "{{ worker03_name }}":
+    ip: "{{ worker03_ip }}"
+    iip: "{{ worker03_ip2 }}"
+    name: "{{ worker03_name }}"
+    cpu: "{{ worker_cpu_size }}"
+    mem: "{{ worker_memory_size }}"
+    disk_size: "{{ worker_disk_size }}"
+    netmask: "{{ subnet_mask }}"
+    ggateway: "{{ gateway_address_02 }}"
+    dns_server: "{{ dns_server_address_01 }}"
+    ddns_server: "{{ dns_server_address_02 }}"
+    domain: "{{ domain_name }}"
+    network: "{{ network_name_01 }}"
+    nnetwork: "{{ network_name_02 }}"
+    esxi: "{{ esxi03_hostname }}"
+
+
+rancher_vm_names:
+  - "{{ rancher01_name }}"
+  - "{{ rancher02_name }}"
+  - "{{ rancher03_name }}"
+  - "{{ lb01_name }}"
+  - "{{ lb02_name }}"
+  - "{{ lb03_name }}"
+  - "{{ worker01_name }}"
+  - "{{ worker02_name }}"
+  - "{{ worker03_name }}"
+

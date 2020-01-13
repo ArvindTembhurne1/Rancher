@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Config
+clusters:
+- name: "arvind-eks-1"
+  cluster:
+    server: "https://lb01.tennet.com/k8s/clusters/c-chbsb"
+    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM3akNDQ\
+      WRhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFvTVJJd0VBWURWUVFLRXdsMGFHVXQKY\
+      21GdVkyZ3hFakFRQmdOVkJBTVRDV05oZEhSc1pTMWpZVEFlRncweE9URXhNREl5TURJMk1qVmFGd\
+      zB5T1RFdwpNekF5TURJMk1qVmFNQ2d4RWpBUUJnTlZCQW9UQ1hSb1pTMXlZVzVqYURFU01CQUdBM\
+      VVFQXhNSlkyRjBkR3hsCkxXTmhNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ\
+      0tDQVFFQTV4QnVTZ2pVdVp0ZENKUlQKaUFhUjFxcmh2WVNkWS83NWV6VjZ2QzJ2Qk52S25yckxqd\
+      ThVNk94WnVpMVBGa3QwOFM4b2ZtTVZQOEt5c2laYwpkeCtkUENiWk5qK2tOekpSSS9LUXN0NG5TW\
+      FBVVXlCcldtSk1tb2hLUWlSQ2dTWGc2OTlGaExyNTFLMXBkZTFnCkp2cjFkT3lyT2J4WE16WEl0R\
+      nlIa0NsRlZnOG9MOXFvY3JwQXlqeWg0Y3FXdmJmL2owSjZpYTlKZHR3TlpoRHkKbWgvRnBQVkRiK\
+      2hjUDdWMGJ6UisrYmxIUGR6YldWaHVkTWdxQ3l0Y3RBU1RvQTRuZEZoYlhjN3UrZ2VlT0RqMQpvV\
+      GpzNFczcjJxdlJSSXRqSnBXeXMxemFuZ1p0cmxNdWJ6aG9PV1crSGY4RkMrYTk3a0huSnJyRHMyR\
+      1pZejgyCmdqcjdVUUlEQVFBQm95TXdJVEFPQmdOVkhROEJBZjhFQkFNQ0FxUXdEd1lEVlIwVEFRS\
+      C9CQVV3QXdFQi96QU4KQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBcEw1U2ZiM2tRRytIRzNvTXpCa\
+      jRBcUxjUGx3QVd1QXJBd0hlbTY1WApvcjZPNytVVnNUSnNMWUsyK1E2cDNtK3czMVVnbW1pSk0wb\
+      XJGSlNPaE9saUEzRmJQeE5FaTNyeDlNU3U4bFlECmlWYWY3R3pzM0ZsbmVTN01YTmxJMmwwYzhJM\
+      Ut1dXloNUw4Y0xTcVFPMENxMThVZjhQNFRoRDJXaFdQblRyenUKUVpoalcyRzR1dGVXQnpvdFdEb\
+      Xd1U0lxMU95TlRwVnNOMDVSQzVwSnNxRytibEp5MU5kaFo4bE9JQTREWjArZgpzYmhQYUZXZWVUZ\
+      nV2WGttbVBWWVV1Tkx0ZXNkcFNUTVlrKzV3ZVY4LzZMQytndkpnaUVnVmxtZEoxUzdTTGtkCnVLb\
+      2pYY3FMRFVPNkNJVnhCWndQY2IyczIzdEw5ZmZDN21vc1RRUm9pZDRCaVE9PQotLS0tLUVORCBDR\
+      VJUSUZJQ0FURS0tLS0t"
+
+users:
+- name: "user-9hphf"
+  user:
+    token: "kubeconfig-user-9hphf:j5smw79fq6srrzl7j4f82hz9hqgdvfdnrdwdzr4lfpj9kvgz2pchc7"
+
+contexts:
+- name: "arvind-eks-1"
+  context:
+    user: "user-9hphf"
+    cluster: "arvind-eks-1"
+
+current-context: "arvind-eks-1"
+

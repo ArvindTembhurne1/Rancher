@@ -1,0 +1,89 @@
+---
+- name: Creating RHEL VMs for Racher server deployment
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Include VM variables
+      include_vars: VirtualMachinevars.yaml
+
+    - name: Creating the Racher server VMs
+      vmware_guest:
+        validate_certs: false
+        folder: /
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+#        cluster: "{{ cluster_name }}"
+        esxi_hostname: "{{ item.value.esxi }}"
+        datacenter: "{{ datacenter_name }}"
+        name: "{{ item.value.name }}"
+        template: "{{ vmtemplate }}"
+        disk:
+          - size_gb: "{{ item.value.disk_size | default(100) }}"
+            type: "{{ disk_type }}"
+            datastore: "{{ datastore_name }}"
+
+
+        networks:
+        - name: "{{ item.value.network }}"
+          ip: "{{ item.value.ip }}"
+          netmask: "{{ item.value.netmask }}"
+#          gateway: "{{ item.value.gateway }}"
+          dns_servers: "{{ item.value.dns_server }}"
+          domain: "{{ item.value.domain }}"
+          device_type: "{{ vm_type }}"
+          start_connected: True
+          type: static
+ #       networks:
+        - name: "{{ item.value.nnetwork }}"
+          ip: "{{ item.value.iip }}"
+          netmask: "{{ item.value.netmask }}"
+          gateway: "{{ item.value.ggateway }}"
+          dns_servers: "{{ item.value.ddns_server }}"
+          domain: "{{ item.value.domain }}"
+          device_type: "{{ vm_type }}"
+          start_connected: True
+          type: static
+
+        - name: "{{ item.value.nnnetwork }}"
+          ip: "{{ item.value.iiip }}"
+          netmask: "{{ item.value.netmask }}"
+          device_type: "{{ vm_type }}"
+          start_connected: True
+          type: static
+
+        - name: "{{ item.value.nnnnetwork }}"
+          ip: "{{ item.value.iiiip }}"
+          netmask: "{{ item.value.netmask }}"
+          device_type: "{{ vm_type }}"
+          start_connected: True
+          type: static
+
+
+        - name: "{{ item.value.nnnnnetwork }}"
+          ip: "{{ item.value.iiiiip }}"
+          netmask: "{{ item.value.nnetmask }}"
+          gateway: "{{ item.value.gggateway }}"
+          dns_servers: "{{ item.value.dddns_server }}"
+          domain: "{{ item.value.domain }}"
+          device_type: "{{ vm_type }}"
+          start_connected: True
+          type: static
+
+
+
+        hardware:
+          memory_mb: "{{ item.value.mem }}"
+          num_cpus: "{{ item.value.cpu }}"
+        customization:
+          hostname: "{{ item.value.name }}"
+          dns_servers: "{{ item.value.dns_server }}"
+          domain: "{{ item.value.domain }}"
+        wait_for_ip_address: True
+        state: poweredon
+      register: "{{ item.value.name }}"
+      with_dict: "{{ rancher_vms }}"
+
+

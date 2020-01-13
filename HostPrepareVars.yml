@@ -1,0 +1,19 @@
+---
+#####Subscription details ########
+
+rhsm_user: kvvmanikanth
+rhsm_pass: 1305R.t1992
+vault_engine_password: Password!234
+vault_rhsub_user: kvvmanikanth
+vault_rhsub_pass: 1305R.t1992
+ansible_ssh_user: root
+ansible_ssh_pass: Password!234
+
+######## subscription pool_id details################
+pool_ids_vms:
+         - 8a85f9996ae5df64016afac3628e2324 
+         - 8a85f9996ae5df64016b041ee0ea0fea
+         - 8a85f9956ae5e434016afe29dfb564d0
+         - 8a85f9996ae5df64016afac362c8233f
+         - 8a85f99a6ae5e464016af9b7777e57e5
+

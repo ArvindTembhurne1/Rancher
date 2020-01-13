@@ -1,0 +1,45 @@
+nodes:
+  - address: 10.10.0.11
+    user: rkeuser
+    role: [controlplane,etcd]
+  - address: 10.10.0.12
+    user: rkeuser
+    role: [controlplane,etcd]
+  - address: 10.10.0.13
+    user: rkeuser
+    role: [controlplane,etcd]
+  - address: 10.10.0.14
+    user: rkeuser
+    role: [worker]
+  - address: 10.10.0.15
+    user: rkeuser
+    role: [worker]
+  - address: 10.10.0.16
+    user: rkeuser
+    role: [worker]
+  - address: 10.10.75.151
+    user: rkeuser
+    role: [worker]
+  - address: 10.10.75.152
+    user: rkeuser
+    role: [worker]
+  - address: 10.10.75.153
+    user: rkeuser  
+    role: [worker]
+  - address: 10.10.75.154
+    user: rkeuser
+    role: [worker]
+  - address: 10.10.76.51
+    user: rkeuser
+    role: [worker]
+  - address: 10.10.76.50
+    user: rkeuser
+    role: [worker]
+
+
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
